@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ receiver.username }} ga Xabar Yuborish - MyBlog{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">{{ receiver.username }} ga Xabar Yuborish</h2>
+
+    <form method="post" class="mt-3">
+        {% csrf_token %}
+        <textarea name="text" class="form-control" rows="4" placeholder="Xabar matni"></textarea>
+        <button type="submit" class="btn btn-primary mt-2">Yuborish</button>
+    </form>
+</div>
+{% endblock %}

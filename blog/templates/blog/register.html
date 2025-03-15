@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Ro‘yxatdan o‘tish - MyBlog{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Ro‘yxatdan o‘tish</h2>
+    <form method="post" class="mt-3">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-primary">Ro‘yxatdan o‘tish</button>
+    </form>
+</div>
+{% endblock %}

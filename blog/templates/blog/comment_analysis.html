@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Izohlar Tahlili - MyBlog{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center">Izohlar Tahlili</h1>
+
+    <h2 class="mt-4">Eng Ko‘p Ishlatilgan So‘zlar</h2>
+    <ul class="list-group">
+        {% for word, count in top_words %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ word }}
+                <span class="badge bg-primary rounded-pill">{{ count }} marta</span>
+            </li>
+        {% empty %}
+            <p class="text-center">Hali izohlar yo‘q.</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+<h1>Qidiruv natijalari</h1>
+
+{% if query %}
+    <p>"{{ query }}" bo‘yicha natijalar:</p>
+{% endif %}
+
+{% for article in articles %}
+    <div>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.content|truncatewords:20 }}</p>
+        <a href="{% url 'article_detail' article.id %}">Batafsil o‘qish</a>
+    </div>
+    <hr>
+{% empty %}
+    <p>Hech qanday natija topilmadi.</p>
+{% endfor %}

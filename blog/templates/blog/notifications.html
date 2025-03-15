@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Bildirishnomalar - MyBlog{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center">Bildirishnomalar</h1>
+
+    {% for notification in notifications %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <p>{{ notification.message }}</p>
+                {% if notification.link %}
+                    <a href="{{ notification.link }}" class="btn btn-primary">Ko‘rish</a>
+                {% endif %}
+            </div>
+        </div>
+    {% empty %}
+        <p class="text-center">Bildirishnomalar yo‘q.</p>
+    {% endfor %}
+</div>
+{% endblock %}
