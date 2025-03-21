@@ -1,0 +1,45 @@
+{% extends 'posts/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+
+    <p><strong>Kategoriya:</strong> {{ post.category }}</p>
+    <p><strong>Teglar:</strong>
+        {% for tag in post.tags.all %}
+            <span class="badge bg-secondary">{{ tag.name }}</span>
+        {% endfor %}
+    </p>
+
+    <hr>
+     <p>
+        <a href="{% url 'like_post' post.pk %}" class="btn btn-success">
+            👍 Like ({{ post.total_likes }})
+        </a>
+        <a href="{% url 'dislike_post' post.pk %}" class="btn btn-danger">
+            👎 Dislike ({{ post.total_dislikes }})
+        </a>
+     </p>
+    <h3>Izohlar</h3>
+    {% for comment in comments %}
+        <div class="border p-2 mb-2">
+            <strong>{{ comment.user.username }}</strong> - <small>{{ comment.created_at }}</small>
+            <p>{{ comment.text }}</p>
+        </div>
+    {% empty %}
+        <p>Hozircha izohlar yo‘q.</p>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+        <h4>Izoh qoldirish</h4>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Yuborish</button>
+        </form>
+    {% else %}
+        <p>Izoh qoldirish uchun <a href="{% url 'login' %}">tizimga kiring</a>.</p>
+    {% endif %}
+{% endblock %}

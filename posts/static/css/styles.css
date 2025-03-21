@@ -1,0 +1,32 @@
+/* Asosiy konteyner uchun stil */
+.blog-posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Maqolalar orasidagi bo'shliq */
+    justify-content: space-between; /* Maqolalarni bir qatorga teng taqsimlash */
+}
+
+/* Har bir maqola uchun stil */
+.blog-post {
+    flex: 1 1 calc(33.333% - 20px); /* Har bir maqola uchun 33.333% kenglik, bo'shliqni hisobga olgan holda */
+    box-sizing: border-box; /* Padding va borderlarni kenglikka kiritish */
+    margin-bottom: 20px; /* Maqolalar orasidagi pastki bo'shliq */
+}
+
+/* Rasm uchun stil */
+.blog-post img {
+    width: 100%; /* Rasmni maqola kengligiga moslashtirish */
+    height: auto; /* Rasmning balandligini avtomatik sozlash */
+    display: block; /* Rasmni blok element qilish */
+}
+
+/* Maqola matni uchun stil */
+.blog-post h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.blog-post p {
+    font-size: 1em;
+    color: #555;
+}
